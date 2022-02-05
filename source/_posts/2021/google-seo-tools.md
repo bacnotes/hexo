@@ -1,5 +1,5 @@
 ---
-title: 安裝SEO分析工具Google Analytics跟Google Search Console
+title: 安裝SEO分析工具Google Analytics跟Google Search Console｜bacnotes備份筆記
 date: 2021-12-28 00:13:36
 updated: 2021-12-28 00:13:36
 excerpt: 寫部落格文章總是希望被人家看到。想知道流量從哪裡來，進站後又逛了哪些頁面，從哪裡離開以及受眾輪廓的資料。要做好SEO搜尋引擎最佳化，你會需要Google提供的兩個免費強大工具Google Analytics(GA)跟Google Search Console(GSC)來幫助你。

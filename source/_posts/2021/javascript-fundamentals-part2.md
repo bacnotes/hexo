@@ -1,5 +1,5 @@
 ---
-title: JavaScript基礎知識複習(2)｜The Complete JavaScript Course
+title: JavaScript基礎知識複習(2)｜The Complete JavaScript Course｜bacnotes備份筆記
 date: 2021-12-31 00:23:33
 updated: 2021-12-31 00:23:33
 excerpt: function函式, object物件, array陣列, loop迴圈 對於這些抽象的概念不理解嗎？這篇會介紹關於JavaScript的嚴格模式、宣告函式的三種寫法、陣列與物件的基本操作以及迭代內部元素的迴圈寫法。

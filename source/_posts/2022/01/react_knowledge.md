@@ -1,5 +1,5 @@
 ---
-title: 自學React的你需要知道的一些知識｜React - The Complete Guide
+title: 自學React的你需要知道的一些知識｜React - The Complete Guide｜bacnotes備份筆記
 date: 2022-01-06 00:23:33
 updated: 2022-01-06 00:23:33
 excerpt: 這是一篇自學React的分享，React算是三大框架中工作數量最高的，為什麼大家都愛用React開發？JSX跟狀態(State)是什麼？為什麼我重新賦值畫面沒有更新？看完這篇筆記後幫助你更了解如何用React開發。

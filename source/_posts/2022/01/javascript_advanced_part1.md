@@ -1,5 +1,5 @@
 ---
-title: JavaScript 進階函式知識 ｜The Complete JavaScript Course
+title: JavaScript 進階函式知識 ｜The Complete JavaScript Course｜bacnotes備份筆記
 date: 2022-01-12 00:23:33
 updated: 2022-01-12 00:23:33
 excerpt: 有想過函式傳遞參數(arguments)時，參數是primitives跟物件其實有差嗎？如何使用bind call apply綁定this？立即執行函式(IIFE)跟閉包(closure)運作機制是什麼？這篇會針對函式(function)做比較進階的介紹。

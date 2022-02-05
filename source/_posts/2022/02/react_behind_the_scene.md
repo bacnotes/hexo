@@ -1,5 +1,5 @@
 ---
-title: React 背後運作原理｜React - The Complete Guide
+title: React 背後運作原理｜React - The Complete Guide｜bacnotes備份筆記
 date: 2022-02-04 00:23:33
 updated: 2022-02-04 00:23:33
 excerpt: 除了講解關於React背後運作機制，也會分享如何在這些機制下使用React.memo、useCallback、useMemo優化效能。

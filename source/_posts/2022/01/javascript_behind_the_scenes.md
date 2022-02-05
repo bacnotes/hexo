@@ -1,5 +1,5 @@
 ---
-title: JavaScript底層運作原理｜The Complete JavaScript Course
+title: JavaScript底層運作原理｜The Complete JavaScript Course｜bacnotes備份筆記
 date: 2022-01-03 00:23:33
 updated: 2022-01-03 00:23:33
 excerpt: Event Loop是什麼?單執行緒又是什麼？除了告訴你JavaScript的語言特性外，也會介紹關於JavaScript一些背後的運作原理。

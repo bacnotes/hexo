@@ -1,5 +1,5 @@
 ---
-title: React 必須了解的3大Hooks：useEffect、useReducer、useContext｜React - The Complete Guide｜
+title: React 必須了解的3大Hooks：useEffect、useReducer、useContext｜React - The Complete Guide｜bacnotes備份筆記
 date: 2022-02-03 00:23:33
 updated: 2022-02-03 00:23:33
 excerpt: 介紹3大React Hook，過往React撰寫以Class component為主，在v16.8.0發佈了Hook(JavaScript函式)，讓管理複雜結構的Component變得更簡單

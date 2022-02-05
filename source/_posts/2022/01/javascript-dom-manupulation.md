@@ -1,5 +1,5 @@
 ---
-title: DOM操作基礎知識複習｜The Complete JavaScript Course
+title: DOM操作基礎知識複習｜The Complete JavaScript Course｜bacnotes備份筆記
 date: 2022-01-02 00:23:33
 updated: 2022-01-02 00:23:33
 excerpt: DOM跟HTML不一樣嗎？其實HTML比較像是網頁的設計稿，而DOM是由W3C制定的文件物件模型，我們可以透過DOM提供的一些方法跟屬性操作網頁，像是選取與修改元素值或是監聽事件。這篇會介紹關於JavaScript DOM操作的基礎知識。

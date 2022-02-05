@@ -1,5 +1,5 @@
 ---
-title: 今晚，我們來聊點物件導向程式設計(Object-Oriented Programming) ｜The Complete JavaScript Course
+title: 今晚，我們來聊點物件導向程式設計(Object-Oriented Programming) ｜The Complete JavaScript Course｜bacnotes備份筆記
 date: 2022-01-14 00:23:33
 updated: 2022-01-14 00:23:33
 excerpt: 程式語言通常分成兩種設計方式，一種是物件導向程式設計OOP，把物件的屬性跟方法「封裝」在物件中管理，使程式碼更容易理解。一種是函式程式設計FP(Functional Programming)，把每個函式做的事情「最小化」，一次只做一件事。兩者的存在都是為了讓程式更易讀更好用。而這篇會講解的是物件導向程式設計。

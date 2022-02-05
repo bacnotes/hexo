@@ -1,5 +1,5 @@
 ---
-title: 字串的處理方法｜The Complete JavaScript Course
+title: 字串的處理方法｜The Complete JavaScript Course｜bacnotes備份筆記
 date: 2022-01-30 00:23:33
 updated: 2022-01-30 00:23:33
 excerpt: 在JavaScript會用到許多處理字串的方法，這份字串方法懶人包整理了indexOf、lastIndexOf、slice、toUpperCase()、toLowerCase()、trim()、trimStart()、trimEnd()、replace()、replaceAll()、includes()、split()、join()、padStart()、padEnd()、repeat()等用法。

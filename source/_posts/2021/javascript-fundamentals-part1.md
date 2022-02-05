@@ -1,5 +1,5 @@
 ---
-title: JavaScript基礎知識複習(1)｜The Complete JavaScript Course
+title: JavaScript基礎知識複習(1)｜The Complete JavaScript Course｜bacnotes備份筆記
 date: 2021-12-29 00:23:33
 updated: 2021-12-29 00:23:33
 excerpt: JavaScript是一個可以開發前後端的程式語言，使用的時候總是會不小心踩到一些坑嗎？這篇會介紹關於JavaScript ES6新增語法、資料型別、let const var宣告比較、作用域、運算子與顯性隱性轉型與流程判斷。
