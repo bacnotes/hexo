@@ -90,6 +90,7 @@ pagination_dir: page
 # Include / Exclude file(s)
 ## include:/exclude: options only apply to the 'source/' folder
 include:
+  - .nojekyll
 exclude:
 ignore:
 
@@ -102,7 +103,7 @@ theme: stun
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repo: https://github.com/bacnotes/bacnotes.github.io.git
+  repo: git@github.com:bacnotes/bacnotes.github.io.git
   branch: master
 
 sitemap:

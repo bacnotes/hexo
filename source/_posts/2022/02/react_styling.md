@@ -4,7 +4,7 @@ description: 我只想使用Inline Style跟純CSS檔案寫React不行嗎？為�
 date: 2022-02-02T00:00:00+08:00
 slug: react-styling
 image: pexels-vlada-karpovich-7025515.jpg
-tags:
+categories:
   - React
 ---
 
