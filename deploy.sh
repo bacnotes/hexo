@@ -7,7 +7,7 @@ cd public
 # echo 'www.example.com' > CNAME
 
 git init
-git branch -m main
+# git branch -m main
 git add .
 git commit -m 'deploy'
 
@@ -18,5 +18,5 @@ git commit -m 'deploy'
 # git remote remove origin
 git remote add origin git@github.com:bacnotes/bacnotes.github.io.git
 
-git push --set-upstream origin main
+git push -f --set-upstream origin master
 cd -
