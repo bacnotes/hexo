@@ -1,18 +1,18 @@
 ---
-title: React的CSS樣式管理方法｜React - The Complete Guide｜bacnotes備份筆記
-description: 我只想使用Inline Style跟純CSS檔案寫React不行嗎？為什麼需要使用Styled Component跟CSS modules呢。這篇會分析不同樣式撰寫方法的優缺點。
-date: 2022-02-02T00:00:00+08:00
-slug: react-styling
-image: pexels-vlada-karpovich-7025515.jpg
+title: React 必須了解的3大Hooks：useEffect、useReducer、useContext｜React - The Complete Guide｜
+date: 2022-02-02 00:23:33
+updated: 2022-02-02 00:23:33
+excerpt: 提到React的樣式，就不得不提到當今趨勢的Styled Component跟CSS modules。這篇會分析四種撰寫樣式方法的優缺點，包含inline style、CSS、Styled Component、CSS modules。
 categories:
   - React
 ---
 
+
 ## 元件該怎麼添加 CSS 樣式?
 
-方法很多種，以下一一列出來介紹
+主要方法有四種：
 
-- inline style 直接給他寫上去(最難維護)
+- Inline style 直接給他寫上去(最難維護)
 - CSS(全域套用容易撞名)
 - Styled Component(CSS in JS)
 - CSS modules(CSS JS 分離)
