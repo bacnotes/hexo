@@ -2,7 +2,7 @@
 title: 關於React Class Component｜React - The Complete Guide｜bacnotes備份筆記
 date: 2022-02-06 19:00:30
 updated: 2022-02-06 19:00:30
-excerpt: Function Component 寫起來精簡又彈性，為什麼會需要了解 Class Component，因為可能還是會在專案當中碰到。了解如何處理Class Component，跟他們適合使用的時機，讓你在寫程式時可以更無往不利，以及遇到錯誤邊界Error Boundaries知道該如何處理。
+excerpt: Function Component 寫起來精簡又彈性，為什麼會需要了解 Class Component，因為可能還是會在專案當中碰到。了解如何處理Class Component，跟他們適合使用的時機，讓你在寫程式時可以更無往不利，以及在JavaScript如何使用錯誤邊界處理可能造成App Crash的狀況。
 categories:
   - React
 ---
