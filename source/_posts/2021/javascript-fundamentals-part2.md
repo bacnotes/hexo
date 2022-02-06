@@ -437,4 +437,4 @@ while (dice !== 6) {
 ```
 
 ＊以上是JavaScript的基礎複習，如果喜歡的話還可以繼續往下看唷。
-[JavaScript進階知識：你所不知道的function](https://bacnotes.github.io/javascript-advanced-part1/ "JavaScript 你所不知道的function ｜The Complete JavaScript Course")
+[JavaScript進階函式知識｜The Complete JavaScript Course](https://bacnotes.github.io/javascript-advanced-part1/ "JavaScript進階函式知識｜The Complete JavaScript Course")

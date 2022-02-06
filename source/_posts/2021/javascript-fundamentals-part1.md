@@ -531,7 +531,7 @@ switch (time) {
 - 關於[Polyfills and transpilers](https://javascript.info/polyfills 'Polyfills and transpilers')
 
 恭喜你看完這一篇 JavaScript 基礎知識複習(1)，休息一下再往下一篇前進吧！  
-[JavaScript 基礎知識複習(2)](https://bacnotes.github.io/javascript-fundamentals-part2/ 'JavaScript基礎知識複習(2)｜The Complete JavaScript Course')
+[JavaScript 基礎知識複習(2)](https://bacnotes.github.io/javascript-fundamentals-part2/ 'JavaScript 基礎知識複習(2)｜The Complete JavaScript Course')
 
 ＊文章內容有錯誤的地方，都歡迎討論與指正
 ＊以上是 JavaScript 的基礎介紹，未來還會撰寫其他進階的文章。

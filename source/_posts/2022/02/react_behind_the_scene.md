@@ -156,7 +156,6 @@ export default App;
 
 - 用 useCallback 包裹函式，第二個參數也是一個陣列
 - 相依[]空陣列表示永遠不會改變，只會跑一次，若裡面有變數做條件判斷觸發，會因為 closure，變數不會更新
--
 
 ```jsx
 const memoizedCallback = useCallback(() => {
@@ -164,7 +163,7 @@ const memoizedCallback = useCallback(() => {
 }, [a, b]);
 ```
 
-- 回到剛剛 button 的範例
+- 回到剛剛 button 的範例，記住按鈕裡面的onClick參數避免因為函式地址改變重新渲染按鈕
 
 ```jsx
 import React, { useState, useCallback } from "react";
@@ -176,7 +175,6 @@ function App() {
   const [showParagraph, setShowParagraph] = useState(false);
 
   console.log("APP RUNNING");
-  // 用useCallback包裹下方程式碼
   const toggleParagraphHandler = useCallback(() => {
     setShowParagraph((prevShowParagraph) => !prevShowParagraph);
   }, []);
@@ -193,7 +191,8 @@ function App() {
 export default App;
 ```
 
-- 若 toggle 外面有一層判斷，相依參數需要加上 allowToggle，若為空陣列則函式本身永遠不會改變而無法觸發
+- 若 toggle 外面有一層判斷，相依參數需要加上 allowToggle
+- 若為空陣列則函式本身永遠不會改變而無法觸發
 
 ```jsx
 
@@ -206,7 +205,6 @@ function App() {
   const [showParagraph, setShowParagraph] = useState(false);
 
   console.log('APP RUNNING');
-  // 用useCallback包裹下方程式碼
   const toggleParagraphHandler = useCallback(() => {
     if(allowToggle){
     setShowParagraph((prevShowParagraph) => !prevShowParagraph);

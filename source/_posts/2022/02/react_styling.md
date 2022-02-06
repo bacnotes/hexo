@@ -1,5 +1,5 @@
 ---
-title: React 必須了解的3大Hooks：useEffect、useReducer、useContext｜React - The Complete Guide｜bacnotes備份筆記
+title: React CSS撰寫方式好多種，我該怎麼選？｜React - The Complete Guide｜bacnotes備份筆記
 date: 2022-02-02 00:23:33
 updated: 2022-02-02 00:23:33
 excerpt: 提到React的樣式，就不得不提到當今趨勢的Styled Component跟CSS modules。這篇會分析四種撰寫樣式方法的優缺點，包含inline style、CSS、Styled Component、CSS modules。
