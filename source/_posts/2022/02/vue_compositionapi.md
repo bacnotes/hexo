@@ -7,15 +7,14 @@ categories:
   - Vue
 ---
 
-以下內容主要參考自 [Vue JS 3 Tutorial for Beginners #10 - The Composition API](https://www.youtube.com/watch?v=V-kxBWcPJfo "Vue JS 3 Tutorial for Beginners #10 - The Composition API")
-歡迎大家也點這個影片看看唷。
+以下內容主要參考自 [Vue JS 3 Tutorial for Beginners #10 - The Composition API](https://www.youtube.com/watch?v=V-kxBWcPJfo "Vue JS 3 Tutorial for Beginners #10 - The Composition API")，歡迎大家也點這個影片看看唷。
 
 ## 使用 Composition API 的好處
 
 - Option API 撰寫的程式碼，資料四散在 data、methods、computed、props 等，Composition API 把變數、函式集中在 setup，方便複用邏輯，不需要為了套用到模板就要宣告在 data 或是 computed，直接丟 return 即可
 - 提高可讀性，一個功能可能會寫在不同的 option API 區塊，閱讀上不方便，使用 Composition API 可以容易把同一個功能的程式碼整理在一起
 - mixin 也可以做到邏輯複用這件事，但有兩個缺點，一是被引用的 mixin 的跟引用的元件之間有隱式依賴，兩者無上下關係，你要重構元件的時候，跟 mixin 有關的東西不好改，因為改了也會影響其他有引用他的元件。
-- 第二是裡面的變數可能會撞名，同一個元件裡面有一樣的屬性名稱，元件的變數名稱權重比 mixin 的大，會覆蓋mixin的，容易會產生bug，如果這個 mixin 又是第三方套件的話...又會更難了，因為程式碼不是你寫的，你可能根本不會想到是這個問題。
+- 第二是裡面的變數可能會撞名，同一個元件裡面有一樣的屬性名稱，元件的變數名稱權重比 mixin 的大，會覆蓋 mixin 的，容易會產生 bug，如果這個 mixin 又是第三方套件的話...又會更難了，因為程式碼不是你寫的，你可能根本不會想到是這個問題。
 
 ## Vue3 的生命週期
 
@@ -66,13 +65,13 @@ export default {
 - props 如果需要解構，使用 toRefs
 
 ```js
-import { toRefs } from 'vue' 
-  props: { 
-    title: String 
-  }, 
-  setup(props) { 
-  const { title } = toRefs(props) 
-  console.log(title.value) 
+import { toRefs } from 'vue'
+  props: {
+    title: String
+  },
+  setup(props) {
+  const { title } = toRefs(props)
+  console.log(title.value)
   }
 ```
 
@@ -120,9 +119,8 @@ export default {
 </script>
 ```
 
-- 使用 Object 的例子
-- 一樣 click 更新名稱跟年齡，點 add age by 1 年齡加 1
-- input text 值跟 name 變數雙向綁定
+- 下方為使用 Object 的例子
+- 一樣 click 更新名稱跟年齡，點 add age by 1 年齡加 1，input text 值跟 name 變數雙向綁定
 
 ```vue
 <template>
