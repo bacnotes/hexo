@@ -2,12 +2,12 @@
 title: React 如何與遠端資料庫互動｜React - The Complete Guide｜bacnotes備份筆記
 date: 2022-02-07 00:23:33
 updated: 2022-02-07 00:23:33
-excerpt:
+excerpt: React存取資料庫有什麼需要特別注意的地方嗎？其實跟一般fetch沒有太大的不同，但需要注意每次呼叫函式如何不因重新渲染元件，導致函式記憶體地址改變而開始無限迴圈，使用useCallback跟useEffect搭配fetch更安全，如果不熟悉這個操作的話可以看看這篇介紹唷。
 categories:
   - React
 ---
 
-## React 怎麼跟資料庫互動
+## React 如何與資料庫互動
 
 - React 會透過 Backend APP 來存取資料庫
 - 由於前端的程式碼透過 devtool 很容易被看光光，直接由前端 APP 存取資料庫等於曝光了資料庫的讀寫入口
