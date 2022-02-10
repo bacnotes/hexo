@@ -5,6 +5,7 @@ updated: 2021-12-25 21:43:11
 excerpt: 你也有Github多組帳號切換的問題嗎？同一台電腦怎麼分別管理公司和個人GitHub帳號？新生成的SSH key檔案要怎麼樣才不會覆蓋原本的檔案，來建立一個config管理Github多組帳號吧！
 categories:
   - GitHub
+  - SSH
 ---
 
 ## 當你需要用同一台電腦使用多組 GitHub 帳號

@@ -107,6 +107,24 @@ for (const day in openingHours) {
 // mon
 // tue
 ```
+- for in 搭配取值的bracket[]迭代值
+```js
+const openingHours = {
+  mon: {
+    open: 10,
+    close: 16,
+  },
+  tue: {
+    open: 12,
+    close: 18,
+  },
+};
+for (const day in openingHours) {
+  console.log(openingHours[day]);
+}
+// mon
+// tue
+```
 
 - for..in 不應該用來迭代一個索引順序很重要的陣列。 陣列索引只是以整數命名的可列舉屬性，其他方面等同於一般物件屬性。 無法擔保 for...in 以特定順序傳回索引，並且它將傳回全部可列舉屬性，包括非整數名的，以及繼承而來的可列舉屬性。
 

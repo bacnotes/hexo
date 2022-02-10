@@ -2,7 +2,7 @@
 title: 介紹Vue3與Composition API｜Bacnotes備份筆記
 date: 2022-02-08 00:23:33
 updated: 2022-02-08 00:23:33
-excerpt: Vue3 Composition API解決了Vue2在同功能程式碼分散於不同option API的可讀性問題，且加入Composition function容易讓程式碼複用，精簡程式碼，開始使用setup()開啟你另一段Vue開發人生，雖然有點像React Hook，但用起來較不容易踩到無限迴圈的坑(有種防呆版Hook的感覺)。
+excerpt: Vue3 Composition API解決了Vue2在同功能程式碼分散於不同option API的可讀性問題，且加入Composition function容易讓程式碼複用，精簡程式碼，雖然有點像React Hook，但用起來較不容易踩到無限迴圈的坑(有種防呆版Hook的感覺)。開始使用setup()開啟你另一段Vue開發人生吧！
 categories:
   - Vue
 ---

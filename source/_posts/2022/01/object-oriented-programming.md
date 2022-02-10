@@ -58,9 +58,9 @@ categories:
 
 ## 建立原型的 3 種方法
 - 建立原型是為了可以使用原型繼承
-- 1. 使用建構函式(Constructor functions)跟 new 運算子產生新的實例
-- 2. ES6 的 class 語法糖
-- 3. Object.create（最簡單創造出一個物件連結 prototype 的方法)
+ 1. 使用建構函式(Constructor functions)跟 new 運算子產生新的實例
+ 2. ES6 的 class 語法糖
+ 3. Object.create（最簡單創造出一個物件連結 prototype 的方法)
 
 ```js
 const num = [1, 2, 3];

@@ -7,8 +7,8 @@ categories:
   - JavaScript
 ---
 
-恭喜你來到第二篇JavaScript基礎知識複習(2)  
-如果還沒看過 [JavaScript 基礎知識複習(1)](https://bacnotes.github.io/javascript-fundamentals-part1/ 'JavaScript基礎知識複習(1)｜The Complete JavaScript Course')  
+恭喜你來到第二篇 JavaScript 基礎知識複習(2)  
+如果還沒看過 [JavaScript 基礎知識複習(1)](https://bacnotes.github.io/javascript-fundamentals-part1/ "JavaScript基礎知識複習(1)｜The Complete JavaScript Course")  
 可以看完上一篇，再回來繼續閱讀唷！
 
 ## 使用嚴格模式提高程式碼品質
@@ -71,19 +71,40 @@ console.log(calcAge(2036)); // 1
 ### 箭頭函式 arrow function
 
 - ES6 語法，沒有自己的 this
+- 若箭頭函式直接返回一個物件，必須在物件外面加上小括號
 
 ```javascript
-// 單行 不需要{}跟return
+// 單行程式碼 不需要{}跟return
 const calcAge = (birthYear) => 2037 - birthYear;
 console.log(calcAge(2036)); // 1
 
-// 多行 需要{}跟return 程式會結束在return這行
+// 多行程式碼 需要{}跟return 程式會結束在return這行
 const retireAge = (yourName, birthYear) => {
   const age = 2037 - birthYear;
   const retirement = 65 - age;
   return `${yourName} retires in ${retirement} years`;
 };
-console.log(retireAge('bacnotes', 2036)); // bacnotes retires in 64 years
+console.log(retireAge("bacnotes", 2036)); // bacnotes retires in 64 years
+
+// 單一參數時，小括號可以省略
+const print = (a) => {
+  console.log(a);
+};
+
+// 多個參數時，小括號不能省略
+const print = (a, b) => {
+  console.log(a, b);
+};
+
+// 單行程式碼要直接回傳物件時，則需要再套一層小括號，key value一樣{a:a, b:b} 寫 {a,b}即可
+const print = (a, b) => ({ a, b });
+// 等於
+const print = (a, b) => {
+  return {
+    a,
+    b,
+  };
+};
 ```
 
 ## array 陣列
@@ -94,7 +115,9 @@ console.log(retireAge('bacnotes', 2036)); // bacnotes retires in 64 years
 const arrayA = [1, 2, 3];
 const arrayB = new Array(123, 123, 123);
 ```
-＊JavaScript的內建物件都不建議new作初始定義的。不過有一些特例是一定要的，例如Date、Error等等。
+
+＊JavaScript 的內建物件都不建議 new 作初始定義的。不過有一些特例是一定要的，例如 Date、Error 等等。
+
 ### 陣列取值，序號從 0 開始
 
 ```javascript
@@ -114,15 +137,15 @@ arrayA[2] = 234;
 - 補充 immutable（不可變更）跟 mutable（可變更）：只有賦值時是傳值的 primitives 是 immutable，而賦值時是傳址的陣列、物件內部值是 mutable
 
 想更了解傳值跟傳址在記憶體裡的運作方式，可以參考這一篇  
-[JavaScript底層運作原理101](https://bacnotes.github.io/javascript-behind-the-scenes/ "JavaScript底層運作原理101")
+[JavaScript 底層運作原理 101](https://bacnotes.github.io/javascript-behind-the-scenes/ "JavaScript底層運作原理101")
 
 ### array 方法
 
 - array.push() 新增元素到陣列最後面，回傳陣列新的長度
 
 ```javascript
-const friends = ['a', 'b', 'c', 'd'];
-const newFriend = friends.push('e');
+const friends = ["a", "b", "c", "d"];
+const newFriend = friends.push("e");
 console.log(friends); // [ 'a', 'b', 'c', 'd', 'e' ]
 console.log(newFriend); // 5
 ```
@@ -130,17 +153,17 @@ console.log(newFriend); // 5
 - array.pop() 刪除陣列最後一個元素 並回傳 刪除的元素值
 
 ```javascript
-const friends = ['a', 'b', 'c', 'd', 'e'];
+const friends = ["a", "b", "c", "d", "e"];
 const popFriend = friends.pop();
-console.log(friends)[('a', 'b', 'c', 'd')];
+console.log(friends)[("a", "b", "c", "d")];
 console.log(popFriend); // e
 ```
 
 - array.unshift() 新增元素到陣列最前面，回傳陣列新的長度
 
 ```javascript
-const friends = ['a', 'b', 'c', 'd'];
-const unshiftFriend = friends.unshift('z');
+const friends = ["a", "b", "c", "d"];
+const unshiftFriend = friends.unshift("z");
 console.log(friends); // [ 'z', 'a', 'b', 'c', 'd' ]
 console.log(unshiftFriend); // 5
 ```
@@ -148,7 +171,7 @@ console.log(unshiftFriend); // 5
 - array.shift() 刪除陣列第一個元素，回傳刪除的元素值
 
 ```javascript
-const friends = ['z', 'a', 'b', 'c', 'd'];
+const friends = ["z", "a", "b", "c", "d"];
 const shiftFriend = friends.shift();
 console.log(friends); // [ 'a', 'b', 'c', 'd' ]
 console.log(shiftFriend); // z
@@ -157,39 +180,42 @@ console.log(shiftFriend); // z
 - array.indexOf(element, fromIndex) 搜尋元素索引位置
 
 ```javascript
-const friends = ['a', 'b', 'c', 'd'];
-const positionD = friends.indexOf('d');
+const friends = ["a", "b", "c", "d"];
+const positionD = friends.indexOf("d");
 console.log(positionD); // 3
-const positionL = friends.indexOf('l');
+const positionL = friends.indexOf("l");
 console.log(positionL); // if not existed return -1
 ```
 
 - array.includes(element, fromIndex) 回傳陣列中是否有這個元素
 
 ```javascript
-const hasLowerCaseA = friends.includes('a');
-const hasUpperCaseA = friends.includes('A');
+const hasLowerCaseA = friends.includes("a");
+const hasUpperCaseA = friends.includes("A");
 console.log(hasLowerCaseA, hasUpperCaseA); // true, false
 ```
 
 還有很多其他的 array 方法，課程先介紹基本的  
-推薦這篇大大寫的[JavaScript Array 陣列操作方法大全 ( 含 ES6 )](https://www.oxxostudio.tw/articles/201908/js-array.html 'JavaScript Array 陣列操作方法大全 ( 含 ES6 )')
+推薦這篇大大寫的[JavaScript Array 陣列操作方法大全 ( 含 ES6 )](https://www.oxxostudio.tw/articles/201908/js-array.html "JavaScript Array 陣列操作方法大全 ( 含 ES6 )")
 
 ## object 物件
+
+- key value pair
+- value 可以儲存不同格式的資料
 
 ### 宣告物件
 
 ```javascript
 const jonas = {
-  firstName: 'Jonas',
-  lastName: 'Schmedtmann',
+  firstName: "Jonas",
+  lastName: "Schmedtmann",
   age: 28,
-  job: 'teacher',
-  friends: ['a', 'b', 'c'],
+  job: "teacher",
+  friends: ["a", "b", "c"],
 };
 ```
 
-### dot notation 取值
+### dot notation 取值：物件.屬性
 
 直觀簡潔，無法在[]裡面修改資料
 
@@ -197,23 +223,23 @@ const jonas = {
 console.log(jonas.lastName); // 'Schmedtmann'
 ```
 
-### brackets notation 取值
+### bracket notation 取值：物件['屬性']
 
 可以在[]裡面修改資料  
-[]裡面是一個 expression，key 記得加上單引號
+[]裡面是一個 expression，屬性記得用單引號包裹
 
 ```javascript
-console.log(jonas['lastName']); // 'Schmedtmann'
+console.log(jonas["lastName"]); // 'Schmedtmann'
 
-const nameKey = 'Name';
-console.log(jonas['last' + nameKey]); // 'Schmedtmann'
+const nameKey = "Name";
+console.log(jonas["last" + nameKey]); // 'Schmedtmann'
 ```
 
 ### brackets notation 可以使用 expression，dot notation 無法
 
 ```javascript
 const interestedIn = prompt(
-  'what do you want ot know about Jonas? Choose between firstName, lastName,age or job'
+  "what do you want ot know about Jonas? Choose between firstName, lastName,age or job"
 );
 
 // dot notation 無法用expression取得屬性(物件沒有interestedIn的屬性)
@@ -225,13 +251,15 @@ console.log(jonas[interestedIn]); // teacher
 // 當屬性存在列印出屬性值，屬性不存在時列印出'data not existed'
 jonas[interestedIn]
   ? console.log(jonas[interestedIn])
-  : console.log('data not existed');
+  : console.log("data not existed");
 ```
 
-### 新增/修改元素值
+### 新增/修改元素值：使用  =  賦值
 
 ```javascript
+// dot notation
 jonas.location = 'Portugal'
+// bracket notation
 jonas['twitter'] = '@jonas'
 jonas.age = 82
 console.log(jonas)
@@ -258,19 +286,19 @@ console.log(`${jonas.firstName} has ${jonas.friends.length} friends, and his bes
 
 ```javascript
 const jonas = {
-  firstName: 'Jonas',
-  lastName: 'Schmedtmann',
+  firstName: "Jonas",
+  lastName: "Schmedtmann",
   birthYear: 2000,
   age: 28,
-  job: 'teacher',
-  friends: ['a', 'b', 'c'],
+  job: "teacher",
+  friends: ["a", "b", "c"],
   // 方法
   calcAge: function (birthYear) {
     return 2027 - birthYear;
   },
 };
 console.log(jonas.calcAge(2000)); // 27
-console.log(jonas['calcAge'](2000)); // 27
+console.log(jonas["calcAge"](2000)); // 27
 ```
 
 - 關於 this 的使用，有助於精簡程式碼
@@ -278,12 +306,12 @@ console.log(jonas['calcAge'](2000)); // 27
 
 ```javascript
 const jonas = {
-  firstName: 'Jona',
-  lastName: 'Schmedtmann',
+  firstName: "Jona",
+  lastName: "Schmedtmann",
   birthYear: 2000,
   age: 28,
-  job: 'teacher',
-  friends: ['a', 'b', 'c'],
+  job: "teacher",
+  friends: ["a", "b", "c"],
   hasDriverLicense: true,
 
   calcAge: function () {
@@ -377,10 +405,10 @@ arr.forEach(function (element) {
 - continue: 跳出本次迴圈，執行下個迴圈(e.g. i = 2 → i = 3)
 
 ```javascript
-const arrayB = ['stringA', 'stringB', 1, 2022 - 11, true];
+const arrayB = ["stringA", "stringB", 1, 2022 - 11, true];
 
 for (let i = 0; i < arrayB.length; i++) {
-  if (typeof arrayB[i] !== 'string') continue;
+  if (typeof arrayB[i] !== "string") continue;
   console.log(arrayB[i], typeof arrayB[i]);
 }
 // stringA string
@@ -391,7 +419,7 @@ for (let i = 0; i < arrayB.length; i++) {
 
 ```javascript
 for (let i = 0; i < arrayB.length; i++) {
-  if (typeof arrayB[i] === 'number') break;
+  if (typeof arrayB[i] === "number") break;
   console.log(arrayB[i], typeof arrayB[i]);
 }
 // stringA string
@@ -416,7 +444,7 @@ for (let i = 0; i < 4; i++) {
 
 ```javascript
 while (i < 10) {
-  text += 'The number is ' + i;
+  text += "The number is " + i;
   i++;
 }
 ```
@@ -436,5 +464,5 @@ while (dice !== 6) {
 // Math.random() 回傳一個偽隨機小數(pseudo-random) 介於0到1之間(包含0，不包含1)
 ```
 
-＊以上是JavaScript的基礎複習，如果喜歡的話還可以繼續往下看唷。
-[JavaScript進階函式知識｜The Complete JavaScript Course](https://bacnotes.github.io/javascript-advanced-part1/ "JavaScript進階函式知識｜The Complete JavaScript Course")
+＊以上是 JavaScript 的基礎複習，如果喜歡的話還可以繼續往下看唷。
+[JavaScript 進階函式知識｜ The Complete JavaScript Course](https://bacnotes.github.io/javascript-advanced-part1/ "JavaScript進階函式知識｜The Complete JavaScript Course")

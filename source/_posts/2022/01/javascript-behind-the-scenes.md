@@ -346,8 +346,8 @@ console.log(z === window.z); // false
 - 一般函式呼叫，嚴格模式下 this 值是 undefined，非嚴格模式下為全域物件
 - 箭頭函式沒有自己的 this，this 值取決於父層(parent scope)
 - eventListener 呼叫時，指向觸發的元素
-- this 不會是函式自己，也不會是變數環境
-- new, call, apply, bind 會於其他篇介紹
+- this 不會是函式自己，也不會是變數環境(Variable Environment)
+- new, call, apply, bind 會於[其他篇](https://bacnotes.github.io/javascript-advanced-part1/ "其他篇")介紹
 
 ＊下方輸出結果用//表示，且視為單獨出現這行的狀況（彼此之間不影響）
 
@@ -385,7 +385,7 @@ matilda.calcAge(); // matilda, 20
 
 // this是動態的
 const f = jonas.calcAge; // copy function to a new variable
-f(); // 一般函式方法呼叫 undefined, cannot read property 'year' of undefined at calcAge
+f(); // 一般函式方法呼叫this undefined, cannot read property 'year' of undefined at calcAge
 ```
 
 ### 讓 this 指向父層的 2 種做法
@@ -439,12 +439,13 @@ var firstName = 'mirenda'
 const jonas = {
   firstName: 'Jonas',
   year: 1991,
+  // 箭頭函式沒有自己的this
   greet: () => {
     console.log(this);
     console.log(`Hey ${this.firstName}`);
   },
 };
-jonas.greet();
+jonas.greet(); // window obj, hey mirenda
 ```
 
 ### arguments
