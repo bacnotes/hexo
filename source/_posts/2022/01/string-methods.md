@@ -2,7 +2,7 @@
 title: 字串的處理方法｜The Complete JavaScript Course｜bacnotes備份筆記
 date: 2022-01-30 00:23:33
 updated: 2022-01-30 00:23:33
-excerpt: 在JavaScript會用到許多處理字串的方法，這份字串方法懶人包整理了indexOf、lastIndexOf、slice、toUpperCase()、toLowerCase()、trim()、trimStart()、trimEnd()、replace()、replaceAll()、includes()、split()、join()、padStart()、padEnd()、repeat()等用法。
+excerpt: 在JavaScript會用到許多處理字串的方法，這份字串方法懶人包整理了indexOf()、lastIndexOf()、slice()、toUpperCase()、toLowerCase()、trim()、trimStart()、trimEnd()、replace()、replaceAll()、includes()、split()、join()、padStart()、padEnd()、repeat()等用法。
 categories:
   - JavaScript
 ---
@@ -21,7 +21,7 @@ console.log("B35"[0]); // B
 console.log(plane.length); // 4
 ```
 
-### indexOf、lastIndexOf 找索引位置
+### indexOf()、lastIndexOf() 找索引位置
 
 - indexOf(searchElement, fromIndex) 由前往後找值的索引，第 2 個參數是 option
 - lastIndexOf(searchElement, fromIndex) 由後往前找值的索引，第 2 個參數是 option
@@ -208,7 +208,8 @@ const capitalizeName = function (name) {
 };
 ```
 
-＊字串拼接還有一種 concat 方法，但 MDN 強烈建議直接使用運算子 assignment operators (en-US) 來達成， 像是 + 及 +=，而不是使用 concat() 方法，因此就不多介紹
+＊字串拼接還有一種 concat 方法，但 MDN 強烈建議直接使用運算子 assignment operators (en-US) 來達成， 像是 + 及 +=
+若想了解concat方法，可以參考[陣列的處理方法](https://bacnotes.github.io/array-methods/ "介紹陣列方法")
 
 ### padStart()、padEnd()填充字串 (IE 沒有支援)
 

@@ -195,7 +195,7 @@ const hasUpperCaseA = friends.includes("A");
 console.log(hasLowerCaseA, hasUpperCaseA); // true, false
 ```
 
-還有很多其他的 array 方法，課程先介紹基本的  
+還有很多其他的 array 方法，可以參考這篇 [陣列的處理方法](https://bacnotes.github.io/array-methods/ "陣列的處理方法") 
 推薦這篇大大寫的[JavaScript Array 陣列操作方法大全 ( 含 ES6 )](https://www.oxxostudio.tw/articles/201908/js-array.html "JavaScript Array 陣列操作方法大全 ( 含 ES6 )")
 
 ## object 物件

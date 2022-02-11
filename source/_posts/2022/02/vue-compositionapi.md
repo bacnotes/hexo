@@ -241,12 +241,13 @@ export default {
 - watch(監聽 dependency, ()=>{})，當 watch 的 dependency 有變化就執行後面的函式
 - 後面執行函式自帶選擇性的使用的兩個參數分別為新值跟舊值
 - 監聽深層物件加上第三個參數{deep: true}
+- 希望載入就執行需要加上immediate: true
 
 ```js
 watch(search, (newValue, OldValue) => {
   console.log("newValue, OldValue");
   console.log("watch");
-});
+}, { deep: true }, { immediate: true });
 ```
 
 ## watchEffect
@@ -264,7 +265,7 @@ watchEffect(() => {
 
 - watch 可以明確指定需要依賴的屬性，watchEffect 則是依賴 callback 中使用到的屬性
 - watch 可以獲取新舊值，watchEffect 無法
-- watch 不會立即執行，watchEffect 在元件初始化時就會執行一次
+- watch 不會立即執行(除非有寫immediate: true)，watchEffect 在元件初始化時就會執行一次
 - watchEffect 中 dependency 會被重複執行，動態新增加的 dependency 也會被收集
 
 ```js
