@@ -7,9 +7,8 @@ categories:
   - React
 ---
 
-
 本文是基於下方這堂 Udemy 課程的筆記，對 React 有興趣的話可以購買看看唷  
-[React - The Complete Guide (incl Hooks, React Router, Redux)](https://www.udemy.com/course/react-the-complete-guide-incl-redux/ 'React - The Complete Guide (incl Hooks, React Router, Redux')
+[React - The Complete Guide (incl Hooks, React Router, Redux)](https://www.udemy.com/course/react-the-complete-guide-incl-redux/ "React - The Complete Guide (incl Hooks, React Router, Redux")
 
 讓我們娓娓道來 React 的各種知識吧！
 
@@ -98,7 +97,7 @@ npm start
 }
 ```
 
-參考文章：[VSCode does not format JSX Correctly](https://pretagteam.com/question/vscode-does-not-format-jsx-correctly 'VSCode does not format JSX Correctly')
+參考文章：[VSCode does not format JSX Correctly](https://pretagteam.com/question/vscode-does-not-format-jsx-correctly "VSCode does not format JSX Correctly")
 
 ### 啟用 emmet snippet 縮寫
 
@@ -144,7 +143,7 @@ const 元件名 = () => {
 export default 元件名;
 ```
 
-參考文章：[Enable Emmet support for JSX in Visual Studio Code | React](https://eshwaren.medium.com/enable-emmet-support-for-jsx-in-visual-studio-code-react-f1f5dfe8809c 'Enable Emmet support for JSX in Visual Studio Code | React')
+參考文章：[Enable Emmet support for JSX in Visual Studio Code | React](https://eshwaren.medium.com/enable-emmet-support-for-jsx-in-visual-studio-code-react-f1f5dfe8809c "Enable Emmet support for JSX in Visual Studio Code | React")
 
 ## 6. 開發專案前環境整理
 
@@ -167,14 +166,14 @@ export default App;
 
 - 但記得 index.js entry point 這邊的 `import React from 'react'`不能拿掉
 
-- 對於 JSX 轉換細節有興趣的人可以參考這篇文章[Introducing the New JSX Transform](https://zh-hant.reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html 'Introducing the New JSX Transform')
+- 對於 JSX 轉換細節有興趣的人可以參考這篇文章[Introducing the New JSX Transform](https://zh-hant.reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html "Introducing the New JSX Transform")
 
 ```jsx
 // Inserted by a compiler (don't import it yourself!)
-import { jsx as _jsx } from 'react/jsx-runtime';
+import { jsx as _jsx } from "react/jsx-runtime";
 
 function App() {
-  return _jsx('h1', { children: 'Hello world' });
+  return _jsx("h1", { children: "Hello world" });
 }
 ```
 
@@ -183,13 +182,15 @@ function App() {
 - 而 `<App />`是一個 JavaScript function 回傳 JSX code，我們不會在瀏覽器 element 區塊看到`<App />`裡面的 JSX 內容(因瀏覽器不懂 JSX 的內容) 而是會 render 出 Babel 轉譯`<App />`後的內容
 
 ```jsx
-import React from 'react';
-import ReactDOM from 'react-dom';
-ReactDom.render(<App />, document.getElementById('root'));
+import React from "react";
+import ReactDOM from "react-dom";
+ReactDom.render(<App />, document.getElementById("root"));
 ```
 
 ## 8. 元件添加 CSS 樣式使用 className 而非 class
-- 因為class是JavaScript的保留字，而JSX是JavaScript的延伸語法，所以不使用class
+
+- 因為 class 是 JavaScript 的保留字，而 JSX 是 JavaScript 的延伸語法，所以不使用 class
+
 ```jsx
 function APP() {
   return (
@@ -226,7 +227,7 @@ export default Todo;
 
 ```jsx
 // App.js
-import Todo from './components/Todo';
+import Todo from "./components/Todo";
 function APP() {
   return (
     <div>
@@ -287,7 +288,7 @@ export default Todo;
 function Todo(props) {
   // 命名通常是xxxHandler
   function openModalHandler() {
-    console.log('click', props.text);
+    console.log("click", props.text);
   }
   return (
     <div className='container'>
@@ -330,9 +331,9 @@ export default Modal;
 
 ```jsx
 // App.js
-import Todo from './components/Todo';
-import Modal from './components/Modal';
-import Backdrop from './components/Backdrop';
+import Todo from "./components/Todo";
+import Modal from "./components/Modal";
+import Backdrop from "./components/Backdrop";
 function APP() {
   return (
     <div>
@@ -349,9 +350,11 @@ export default App;
 ```
 
 ## 13. useState 紀錄網頁 State，跟使用者互動
-- useState是React一個Hook，Hook是一個內建function，useState是用來操作狀態的hook
+
+- useState 是 React 一個 Hook，Hook 是一個內建 function，useState 是用來操作狀態的 hook
 - 我們註冊不同的 State，React 會在 State 改變時 render 不同東西
 - const [state, setState] = useState(initialState setState(newState);
+
 ```jsx
 // useState 是一個 function，因為是第三方函式庫不用寫路徑
 import { useState } from ‘react’
@@ -369,36 +372,48 @@ return (
 }
 export default SomeFunction
 ```
+
 ### 為什麼我重新賦值的變數畫面沒有更新？
+
 **無法透過重新賦值 變數 的值來更新畫面**
 
-- 更改值會需要呼叫陣列的第二個參數(一個callback function)更新初始值(以下方範例來說是 setModalIsOpen)
-- 呼叫useState的時候 React 才會重新執行 State 所屬的元件，並重新更新資料跟畫面
-＊不這麼做的話畫面是不會重新渲染的（也就是跑一次下方的return的JSX)。
+- 更改值會需要呼叫陣列的第二個參數(一個 callback function)更新初始值(以下方範例來說是 setModalIsOpen)
+- 呼叫 useState 的時候 React 才會重新執行 State 所屬的元件，並重新更新資料跟畫面
+  ＊不這麼做的話畫面是不會重新渲染的（也就是跑一次下方的 return 的 JSX)。
 - 我們會用 setModalIsOpen 來更新值，用 modalIsOpen 判斷條件渲染 JSX 的程式碼
 
-＊Hook有很多種，官方文件有列出所有的Hook在這裡[Hook API](https://zh-hant.reactjs.org/docs/hooks-reference.html "Hook API")
-- useEffect可以fetch 資料、訂閱、或操作 DOM
-- useRef可以抓取Dom元素，獲取表單的value(但更新 current 值不會重新渲染畫面)    
-- useContext可以管理全域狀態等，下方會繼續介紹    
-### 同層元件監聽與觸發事件：以開啟 modal 為例
+＊Hook 有很多種，官方文件有列出所有的 Hook 在這裡[Hook API](https://zh-hant.reactjs.org/docs/hooks-reference.html "Hook API")
+
+- useEffect 可以 fetch 資料、訂閱、或操作 DOM
+- useRef 可以抓取 Dom 元素，獲取表單的 value(但更新 current 值不會重新渲染畫面)
+- useContext 可以管理全域狀態等，下方會繼續介紹
+
+### 同層監聽：click 開啟刪除確認 modal
 
 ```jsx
 // Todo.js 元件
-import Modal from './components/Modal';
-import Backdrop from './components/Backdrop';
+
+import { useState } from "react";
+
+import Modal from "./Modal";
+import Backdrop from "./Backdrop";
 
 function Todo(props) {
-  const [modalIsOpen, setModalIsOpen] = userState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
   function deleteHandler() {
     setModalIsOpen(true);
   }
 
   return (
-    <div>
-      <h1 className='container'>Hello</h1>
-      <Todo text='Learn React' />
-      <Todo text='Master React' />
+    <div className='card'>
+      <h2>{props.text}</h2>
+      <div className='actions'>
+        // 點擊觸發上層function
+        <button className='btn' onClick={deleteHandler}>
+          Delete
+        </button>
+      </div>
       {modalIsOpen && <Modal />}
       {modalIsOpen && <Backdrop />}
     </div>
@@ -406,7 +421,7 @@ function Todo(props) {
 }
 ```
 
-### 父層監聽子層觸發事件：以關閉 modal 為例
+### 父層監聽子層：click 關閉刪除確認 modal
 
 - 子元件觸發事件，方法寫在父層
 - onClick 監聽是觸發同層 function，裡面包裹 props 傳下來的父層方法(Passing Function As Props)
@@ -414,8 +429,8 @@ function Todo(props) {
 
 ```jsx
 // Todo.js 元件
-import Modal from './components/Modal';
-import Backdrop from './components/Backdrop';
+import Modal from "./components/Modal";
+import Backdrop from "./components/Backdrop";
 
 function Todo(props) {
   const [modalIsOpen, setModalIsOpen] = userState(false);
@@ -446,10 +461,11 @@ function Todo(props) {
 // Modal.js
 function Modal(props) {
   function cancelHandler() {
-    // 執行onCancel 父層方法
+    // 執行onCancel 父層方法 關閉modal
     props.onCancel();
   }
   function confirmHandler() {
+    // 執行onCancel 父層方法 關閉modal
     props.onConfirm();
   }
   return (
@@ -499,7 +515,7 @@ Favorites.js NewMeetup.js 同上邏輯 改div內容跟function名字跟export名
 
 ```jsx
 // index.js
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter } from "react-router-dom";
 // 初始化套件 確保他有在觀察url
 RouterDOM.render(
   <BrowserRouter>
@@ -512,10 +528,10 @@ RouterDOM.render(
 
 ```jsx
 // App.js
-import { Route } from 'react-router-dom';
-import AllMeetupsPage from './pages/AllMeetups';
-import NewMeetupsPage from './pages/NewMeetups';
-import FavoritesPage from './pages/Favorites';
+import { Route } from "react-router-dom";
+import AllMeetupsPage from "./pages/AllMeetups";
+import NewMeetupsPage from "./pages/NewMeetups";
+import FavoritesPage from "./pages/Favorites";
 
 function App() {
   return (
@@ -577,11 +593,11 @@ export default MainNavigation
 
 ```jsx
 // App.js
-import { Route } from 'react-router-dom';
-import AllMeetupsPage from './pages/AllMeetups';
-import NewMeetupsPage from './pages/NewMeetups';
-import FavoritesPage from './pages/Favorites';
-import MainNavigation from './components/layout/MainNavigation';
+import { Route } from "react-router-dom";
+import AllMeetupsPage from "./pages/AllMeetups";
+import NewMeetupsPage from "./pages/NewMeetups";
+import FavoritesPage from "./pages/Favorites";
+import MainNavigation from "./components/layout/MainNavigation";
 
 function App() {
   return (
@@ -652,22 +668,22 @@ export default App
 // pages/AllMeetup.js
 const DUMMY_DATA = [
   {
-    id: 'm1',
-    title: 'This is a first meetup',
+    id: "m1",
+    title: "This is a first meetup",
     image:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Stadtbild_M%C3%BCnchen.jpg/2560px-Stadtbild_M%C3%BCnchen.jpg',
-    address: 'Meetupstreet 5, 12345 Meetup City',
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Stadtbild_M%C3%BCnchen.jpg/2560px-Stadtbild_M%C3%BCnchen.jpg",
+    address: "Meetupstreet 5, 12345 Meetup City",
     description:
-      'This is a first, amazing meetup which you definitely should not miss. It will be a lot of fun!',
+      "This is a first, amazing meetup which you definitely should not miss. It will be a lot of fun!",
   },
   {
-    id: 'm2',
-    title: 'This is a second meetup',
+    id: "m2",
+    title: "This is a second meetup",
     image:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Stadtbild_M%C3%BCnchen.jpg/2560px-Stadtbild_M%C3%BCnchen.jpg',
-    address: 'Meetupstreet 5, 12345 Meetup City',
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Stadtbild_M%C3%BCnchen.jpg/2560px-Stadtbild_M%C3%BCnchen.jpg",
+    address: "Meetupstreet 5, 12345 Meetup City",
     description:
-      'This is a first, amazing meetup which you definitely should not miss. It will be a lot of fun!',
+      "This is a first, amazing meetup which you definitely should not miss. It will be a lot of fun!",
   },
 ];
 
@@ -694,9 +710,11 @@ export default AllMeetupsPage;
 ## 18. 客製化元件的其他使用方式，目的在於讓元件專注在一件事
 
 ### 元件作為容器 Wrapper/Container 使用
-- 設定Container包裹children內容
+
+- 設定 Container 包裹 children 內容
+
 ```jsx
-import classes from './Container.module.css';
+import classes from "./Container.module.css";
 // 引入props.children children是每個元件都可以獲取的預設屬性，值是tag包覆的內容
 function Container(props) {
   return <div className={classes.container}>{props.children}</div>;
@@ -704,10 +722,11 @@ function Container(props) {
 
 export default Container;
 ```
-- div外用Container包裹
+
+- div 外用 Container 包裹
 
 ```jsx
-import Container from '../ui/Container';
+import Container from "../ui/Container";
 function MeetUpItem(props) {
   return (
     <Container>
@@ -723,8 +742,8 @@ function MeetUpItem(props) {
 - 在 components/layout 資料夾製作一個 Layout.js
 
 ```jsx
-import MainNavigation from './MainNavigation';
-import classes from './Layout.module.css';
+import MainNavigation from "./MainNavigation";
+import classes from "./Layout.module.css";
 
 function Layout(props) {
   return (
@@ -786,12 +805,12 @@ export default NewMeetupPage;
 ```
 
 - 新增表單元件
-- for 屬性在React要寫成 htmlFor
+- for 屬性在 React 要寫成 htmlFor
 
 ```jsx
 // NewMeetupForm.js
-import Container from '../ui/Container';
-import classes from './NewMeetupForm.module.css';
+import Container from "../ui/Container";
+import classes from "./NewMeetupForm.module.css";
 function NewMeetupForm() {
   return (
     <Container>
@@ -828,9 +847,11 @@ export default NewMeetupFrom;
 
 ## 20. 使用 useRef 獲取表單元素值
 
-- 偵測表單內容有兩種做法  
-1. 使用 useState 監聽每個 input onChange 事件，更新資料  
-2. 使用 useRef 直接操作 DOM 元素  
+- 偵測表單內容有兩種做法
+
+1. 使用 useState 監聽每個 input onChange 事件，更新資料
+2. 使用 useRef 直接操作 DOM 元素
+
 - ref 還適合用在管理 focus、文字選擇、播放影音、整合第三方 DOM 函式庫、觸發動畫
 - 非必要時不濫用 ref 操作 DOM 元素，多數元素保持用 State 管理
 - ref 建議以 callback 方式使用
@@ -845,9 +866,9 @@ this.content.focus();
 
 ```jsx
 // NewMeetupForm.js
-import Container from '../ui/Container';
-import classes from './NewMeetupForm.module.css';
-import { useRef } from 'react';
+import Container from "../ui/Container";
+import classes from "./NewMeetupForm.module.css";
+import { useRef } from "react";
 function NewMeetupForm() {
   // 創造一個ref物件，帶有ref屬性，裡面有current屬性
   const titleInputRef = useRef();
@@ -909,7 +930,9 @@ function NewMeetupForm() {
 }
 export default NewMeetupFrom;
 ```
+
 - 表單資料丟到父層
+
 ```jsx
 // pages/NewMeetup.js
 function NewMeetupPage() {
@@ -968,21 +991,21 @@ export default NewMeetupPage;
 - history.replace('/') 回首頁，直接取代 current entry 資料，不新增資料，當不希望使用者回上一頁可使用
 
 ```jsx
-import { useHistory } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 
 function NewMeetupPage() {
   function addMeetupHandler(meetupData) {
     // Firebase realtime 資料庫的API後方加上/xxx.json等於一個大表
-    fetch('firebaseAPI網址/xxx.json', {
-      method: 'POST',
+    fetch("firebaseAPI網址/xxx.json", {
+      method: "POST",
       // body是JSON格式
       body: JSON.stringify(meetupData),
       // 部分API會要求提供'Content-Type'
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
     }).then(() => {
-      history.replace('/');
+      history.replace("/");
     });
   }
 }
@@ -1000,14 +1023,14 @@ function NewMeetupPage() {
 
 ```jsx
 // pages/AllMeetup.js
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 function AllMeetupsPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [meetups, setMeetups] = useState([]);
   useEffect(() => {
     // fetch回傳promise
-    fetch('firebaseUrl/meetups.json')
+    fetch("firebaseUrl/meetups.json")
       .then((response) => {
         // 獲取body 使用.json方法 把json檔案變成JS object
         // 因為.json return promise所以用then接 課程這邊專心在獲取資料 沒有寫到error處理
@@ -1068,7 +1091,7 @@ export default AllMeetupsPage;
 - 管理 State 的 context 一般會建立在 src/store 下(e.g. favorites-context.js)
 
 ```jsx
-import { createContext, useState } from 'react';
+import { createContext, useState } from "react";
 
 // 建立一個context物件 裡面放初始值
 const FavoritesContext = createContext({
@@ -1127,8 +1150,8 @@ export default FavoritesContext;
 
 ```jsx
 // index.js
-import { BrowserRouter } from 'react-router-dom';
-import { FavoriteContextProvider } from './store/favorite-context';
+import { BrowserRouter } from "react-router-dom";
+import { FavoriteContextProvider } from "./store/favorite-context";
 
 RouterDOM.render(
   <FavoriteContextProvider>
@@ -1141,7 +1164,7 @@ RouterDOM.render(
 
 ## 24-2 在元件引用 useContext
 
-- 引用到MeetupItem.js
+- 引用到 MeetupItem.js
 
 ```jsx
 // 點加入我的最愛就會把item加入陣列，更新按鈕文字
@@ -1180,7 +1203,7 @@ function MeetUpItem(props) {
 }
 ```
 
-- 引用到FavoritesPage
+- 引用到 FavoritesPage
 
 ```jsx
 ...

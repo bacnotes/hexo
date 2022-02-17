@@ -7,12 +7,12 @@ categories:
   - React
 ---
 
-過往React撰寫以Class component為主，在v16.8.0發佈了Hook(JavaScript函式)，讓複雜結構的Component管理變得更簡單，也不再有component包裝地獄(provider、consumer、higher-order component、render props)。官方提到Hook 能涵蓋 Class 所有既有的使用案例，但未來也會繼續支援 Class component，所以使用Class component的朋友們也別擔心，這只是更好使用React另一種方法，感受它並擁抱它（？
+過往 React 撰寫以 Class component 為主，在 v16.8.0 發佈了 Hook(JavaScript 函式)，讓複雜結構的 Component 管理變得更簡單，也不再有 component 包裝地獄(provider、consumer、higher-order component、render props)。官方提到 Hook 能涵蓋 Class 所有既有的使用案例，但未來也會繼續支援 Class component，所以使用 Class component 的朋友們也別擔心，這只是更好使用 React 另一種方法，感受它並擁抱它（？
 
 ## 什麼是 Hook?
 
-- Hook 是JavaScript函式，react 提供的內建 Hook 為 use 開頭的函式(e.g. useEffect、useReducer、useContext)
-- 只能用在React的Function Component跟 custom Hook，class Component 無法，當然自己寫的function也無法
+- Hook 是 JavaScript 函式，react 提供的內建 Hook 為 use 開頭的函式(e.g. useEffect、useReducer、useContext)
+- 只能用在 React 的 Function Component 跟 custom Hook，class Component 無法，當然自己寫的 function 也無法
 - 使用時需要寫在元件內第一層，不能巢狀到，也不要在迴圈、條件判斷下使用
 
 ## 什麼是 Effect(Side Effect)?
@@ -34,15 +34,13 @@ Side Effect 可能造成的結果
 ## 使用 useEffect 來管理 Effect(Side Effect)
 
 - useEffect(()=> {...}, [dependencies])
-- 使用時機：re-render 元件時希望會再次觸發的函式
-- useEffect 發生時間點為畫面渲染完
-- 若沒有相依某個參數，每次渲染完都會執行，寫跟沒寫一樣
+- 用來限制元件 re-render 執行的程式碼
+- 若沒有相依某個參數，掛載元件跟更新資料都會執行，寫跟沒寫一樣
 - 若有相依某個參數，re-render 時參數有改變的話可以重新觸發 useEffect 裡面的函式
 - []相依空陣列，第一次渲染完會觸發，因空陣列資料不變，所以後續都不會觸發
 - [state]相依狀態，第一次渲染完會觸發，且每次狀態改變都會跑一次
 - [props]相依 props，第一次渲染完會觸發，props 更新都會跑一次
-- 控制好觸發時機點，避免不必要的觸發
-
+- 發生時間點為畫面渲染完，控制好觸發時機點，避免不必要的觸發
 - 相依空陣列範例
 
 ```jsx
@@ -193,7 +191,7 @@ function FriendStatus(props) {
 - reducerFn (prevState, action) => newState
 - initFn 可以用來設定 initState，如果比較複雜的話，需要外部資料等等
 
-- 使用 useReducer 管理 email 跟 password input 狀態(effect相依參數改成驗證狀態，減少不必要觸發)
+- 使用 useReducer 管理 email 跟 password input 狀態(effect 相依參數改成驗證狀態，減少不必要觸發)
 
 ```jsx
 // reducerFn寫在元件外面，相關參數會透過dispatch傳入
@@ -526,4 +524,4 @@ export default Navigation;
 - 不適合頻繁更動的資料（每秒好幾次)，使用 redux
 - 鄰近父子元件還是建議透過 props 傳遞資料，而非用 useContext 取代
 
-如果還想多了解React的朋友，可以繼續閱讀這篇[自學React的你需要知道的一些知識｜React - The Complete Guide](https://bacnotes.github.io/react-knowledge/ "自學React的你需要知道的一些知識｜React - The Complete Guide")
+如果還想多了解 React 的朋友，可以繼續閱讀這篇[自學 React 的你需要知道的一些知識｜ React - The Complete Guide](https://bacnotes.github.io/react-knowledge/ "自學React的你需要知道的一些知識｜React - The Complete Guide")

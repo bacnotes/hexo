@@ -1,10 +1,8 @@
 ---
 title: 陣列的處理方法｜The Complete JavaScript Course｜bacnotes備份筆記
-date: 2022-02-11 12:23:33
-updated: 2022-02-11 12:23:33
-excerpt: 陣列是許多fetch資料後需要處理的資料型態，這份陣列方法懶人包整理了slice()、concat()、join()、at()、map()、filter()、reduce()、find()、splice()、reverse()、forEach()
-
-等用法。
+date: 2022-02-11 00:23:33
+updated: 2022-02-11 00:23:33
+excerpt: 陣列是許多fetch資料後需要處理的資料型態，這份陣列方法懶人包整理了slice()、concat()、join()、at()、map()、filter()、reduce()、find()、findIndex()、splice()、reverse()、forEach()等用法。
 categories:
   - JavaScript
 ---
@@ -228,8 +226,8 @@ console.log(found);
 - array.findIndex(callback[, thisArg])
 - 回傳第一個滿足所提供之測試函式的元素索引，若找不到會回傳-1
 - callback 可以收三個參數（當前處理函數、當前處理函數 index、正在操作的陣列）
-- indexOf(element, fromIndex) 也可以搜尋元素索引位置，但參數通常是給一個primitives值
-- findIndex()期望參數為一個callback，可以處理複雜邏輯
+- indexOf(element, fromIndex) 也可以搜尋元素索引位置，但參數通常是給一個 primitives 值
+- findIndex()期望參數為一個 callback，可以處理複雜邏輯
 
 ```js
 // 刪除特定筆資料
@@ -250,6 +248,8 @@ console.log(array.findIndex(isLargeNumber));
 ```
 
 ## 會改變原始資料
+
+push()、pop()、shift()、unshift()之前在這篇有介紹過，可以看這邊
 
 ### splice()
 
@@ -290,8 +290,8 @@ array.reverse();
 // ["three", "two", "one"]
 ```
 
-## 原始資料可改可不改，看函式邏輯
-
+## 針對每個元素處理
+- 原始資料可改可不改，看函式邏輯
 - 可以只迭代 render 在畫面上，也可修改資料 e.g.新增物件屬性等
 
 ### forEach()

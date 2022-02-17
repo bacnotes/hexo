@@ -81,7 +81,7 @@ import { toRefs } from 'vue'
 
 ### template refs
 
-- ref : 可以使用任何型態的資料，在生命週期函式取資料時用變數.value(模板上則不需要.value)不會對 Object 或是 Array 內部的屬性做監聽，適合用於傳值的 primitives。
+- ref : 可以使用任何型態的資料，在生命週期函式取資料時用變數.value(模板上則不需要.value)不會對 Object 或是 Array 內部的屬性做監聽，適合用於傳值的 primitives也適合用於單層物件。
 - 使用前需要先`import {ref} from vue`
 - 雖然可以用於手動改變 DOM 內容，但實務上很少這樣綁定操作
 - 下方為使用 primitives 的例子
@@ -247,7 +247,7 @@ export default {
 watch(search, (newValue, OldValue) => {
   console.log("newValue, OldValue");
   console.log("watch");
-}, { deep: true }, { immediate: true });
+}, { deep: true , immediate: true });
 ```
 
 ## watchEffect
