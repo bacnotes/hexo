@@ -198,99 +198,160 @@ export default SimpleInput;
 
 ### 使用 Custom Hook 管理多個元素驗證
 
-- 套用Hook在
+- 一個 input 就寫了這麼多程式碼，那 10 個 input 就...
+- 使用上篇文章提到的 Custom Hook，創造一個 input Hook 來處理共同邏輯
+- 驗證的邏輯每個 input 可能條件不同，傳入 function 收 input 內容，讓條件彈性化
 
 ```jsx
 import { useState } from "react";
+// 傳入一個validateValue function驗證enteredValue
+const useInput = (validateValue) => {
+  const [enteredValue, setEnteredValue] = useState("");
+  const [isTouched, setIsTouched] = useState(false);
 
-const SimpleInput = (props) => {
-  const [enteredName, setEnteredName] = useState("");
-  const [enteredNameTouched, setEnteredNameTouched] = useState(false);
+  const valueIsValid = validateValue(enteredValue);
+  const hasError = !valueIsValid && isTouched;
 
-  const [enteredEmail, setEnteredEmail] = useState("");
-  const [enteredEmailTouched, setEnteredEmailTouched] = useState(false);
+  const valueChangeHandler = (event) => {
+    setEnteredValue(event.target.value);
+  };
 
-  const enteredNameIsValid = enteredName.trim() !== "";
-  const nameInputIsInvalid = !enteredNameIsValid && enteredNameTouched;
+  const inputBlurHandler = (event) => {
+    setIsTouched(true);
+  };
 
-  const enteredEmailIsValid = enteredEmail.includes("@");
-  const enteredEmailIsInvalid = !enteredEmailIsValid && enteredEmailTouched;
+  const reset = () => {
+    setEnteredValue("");
+    setIsTouched(false);
+  };
+
+  return {
+    value: enteredValue,
+    isValid: valueIsValid,
+    hasError,
+    valueChangeHandler,
+    inputBlurHandler,
+    reset,
+  };
+};
+
+export default useInput;
+```
+
+- 引用到元件中
+
+```jsx
+import useInput from "../hooks/use-input";
+// 驗證邏輯
+const isNotEmpty = (value) => value.trim() !== "";
+const isEmail = (value) => value.includes("@");
+
+const BasicForm = (props) => {
+  // 套用custom hook，取新變數名區隔狀態
+  const {
+    value: firstNameValue,
+    isValid: firstNameIsValid,
+    hasError: firstNameHasError,
+    valueChangeHandler: firstNameChangeHandler,
+    inputBlurHandler: firstNameBlurHandler,
+    reset: resetFirstName,
+    //驗證邏輯
+  } = useInput(isNotEmpty);
+
+  const {
+    value: lastNameValue,
+    isValid: lastNameIsValid,
+    hasError: lastNameHasError,
+    valueChangeHandler: lastNameChangeHandler,
+    inputBlurHandler: lastNameBlurHandler,
+    reset: resetLastName,
+    //驗證邏輯
+  } = useInput(isNotEmpty);
+
+  const {
+    value: emailValue,
+    isValid: emailIsValid,
+    hasError: emailHasError,
+    valueChangeHandler: emailChangeHandler,
+    inputBlurHandler: emailBlurHandler,
+    reset: resetEmail,
+    //驗證邏輯
+  } = useInput(isEmail);
 
   let formIsValid = false;
-  // 兩個驗證都過 整個表單變成valid，submit按鈕可以點
-  if (enteredNameIsValid && enteredEmailIsValid) {
+  // 都過了才可以提交
+  if (firstNameIsValid && lastNameIsValid && emailIsValid) {
     formIsValid = true;
   }
 
-  const nameInputChangeHandler = (event) => {
-    setEnteredName(event.target.value);
-  };
-
-  const emailInputChangeHandler = (event) => {
-    setEnteredEmail(event.target.value);
-  };
-
-  const nameInputBlurHandler = (event) => {
-    setEnteredNameTouched(true);
-  };
-
-  const emailInputBlurHandler = (event) => {
-    setEnteredEmailTouched(true);
-  };
-
-  const formSubmissionHandler = (event) => {
+  const submitHandler = (event) => {
     event.preventDefault();
 
-    setEnteredNameTouched(true);
-
-    if (!enteredNameIsValid) {
+    if (!formIsValid) {
       return;
     }
 
-    console.log(enteredName);
-
-    // nameInputRef.current.value = ''; => NOT IDEAL, DON'T MANIPULATE THE DOM
-    setEnteredName("");
-    setEnteredNameTouched(false);
-
-    setEnteredEmail("");
-    setEnteredEmailTouched(false);
+    console.log("Submitted!");
+    console.log(firstNameValue, lastNameValue, emailValue);
+    //提交後還原狀態
+    resetFirstName();
+    resetLastName();
+    resetEmail();
   };
 
-  const nameInputClasses = nameInputIsInvalid
+  // 動態驗證error樣式
+  const firstNameClasses = firstNameHasError
     ? "form-control invalid"
     : "form-control";
 
-  const emailInputClasses = enteredEmailIsInvalid
+  const lastNameClasses = lastNameHasError
     ? "form-control invalid"
     : "form-control";
+
+  const emailClasses = emailHasError ? "form-control invalid" : "form-control";
 
   return (
-    <form onSubmit={formSubmissionHandler}>
-      <div className={nameInputClasses}>
-        <label htmlFor='name'>Your Name</label>
+    <form onSubmit={submitHandler}>
+      <div className='control-group'>
+        <div className={firstNameClasses}>
+          <label htmlFor='name'>First Name</label>
+          // value綁定狀態 onChange變更值 onBlur觸發驗證
+          <input
+            type='text'
+            id='name'
+            value={firstNameValue}
+            onChange={firstNameChangeHandler}
+            onBlur={firstNameBlurHandler}
+          />
+          {firstNameHasError && (
+            <p className='error-text'>Please enter a first name.</p>
+          )}
+        </div>
+        <div className={lastNameClasses}>
+          <label htmlFor='name'>Last Name</label>
+          <input
+            type='text'
+            id='name'
+            value={lastNameValue}
+            onChange={lastNameChangeHandler}
+            onBlur={lastNameBlurHandler}
+          />
+          {lastNameHasError && (
+            <p className='error-text'>Please enter a last name.</p>
+          )}
+        </div>
+      </div>
+      <div className={emailClasses}>
+        <label htmlFor='name'>E-Mail Address</label>
         <input
           type='text'
           id='name'
-          onChange={nameInputChangeHandler}
-          onBlur={nameInputBlurHandler}
-          value={enteredName}
+          value={emailValue}
+          onChange={emailChangeHandler}
+          onBlur={emailBlurHandler}
         />
-        {nameInputIsInvalid && (
-          <p className='error-text'>Name must not be empty.</p>
-        )}
-      </div>
-      <div className={emailInputClasses}>
-        <label htmlFor='email'>Your E-Mail</label>
-        <input
-          type='email'
-          id='email'
-          onChange={emailInputChangeHandler}
-          onBlur={emailInputBlurHandler}
-          value={enteredEmail}
-        />
-        {enteredEmailIsInvalid && (
-          <p className='error-text'>Please enter a valid email.</p>
+        {emailHasError && (
+          <p className='error-text'>Please enter a valid email address.</p>
         )}
       </div>
       <div className='form-actions'>
