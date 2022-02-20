@@ -56,14 +56,14 @@ A JavaScript library for building user interfaces.
 - Angular：用 TypeScript 撰寫，有很多內建的 framework，不太需要社群資源，比較複雜
 - Vue：內建 framework 比 React 多，比 Angular 少，有很多語法糖，適合初學者建立框架與生命週期觀念
 
-## 4. React 建立專案 CRA(create-creact-app)
+## 4. React 建立專案 CRA(create-react-app)
 
 - 相對傳統撰寫網頁的方式，只要建立 HTML、CSS、JavaScript 三個檔案
 - React 專案建立相較複雜一點，使用 CRA 指令前要先安裝 node.js(JavaScript 執行環境)才能使用 npm/npx 等指令下載相關模組(記得下載時網路要順暢)
 
 ```jsx
 // cd到專案資料夾 專案名以new-app為範例
-npx create-creact-app new-app
+npx create-react-app new-app
 cd new-app
 npm start
 // 可以在localhost 3000看到
