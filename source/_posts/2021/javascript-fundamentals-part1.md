@@ -81,8 +81,8 @@ console.log(a, b) // 2 1
 let a = 1
 let b = 2
 const obj = {a: 11, b: 22}
-({a, b} = obj) // 不能直接對block{}賦值，需要包在()中
-console.log(a, b) // 11 22
+({b, a} = obj) // 不能直接對block{}賦值，需要包在()中
+console.log(a, b) // 22 11
 ```
 
 -- 用解構賦值取出巢狀變數變得很簡單
@@ -342,8 +342,8 @@ if (typeof a === typeof b) {
 
 ```javascript
 !'Hello'; // false
-!0; // ture
-!{}; // true
+!0; // true
+!{}; // false
 !null; // true
 !undefined; // true
 !NaN; // true
@@ -410,20 +410,20 @@ a || !b   // false
 
 - 可以做為 if 條件判斷的 argument，要執行哪一段程式
 - 也可以套用`&&`或`||`的邏輯，為變數賦值，讓程式碼更精簡
-- && 可以檢查變數是否存在，存在才會執行後面的程式碼
+- && 可以檢查變數是否為true，true時才會執行後面的程式碼
 - || 可以當作處理例外情況，當左邊變數有問題，使用右邊預設值
 
 ```javascript
 // 不限資料型態
-const a = var1 && var2 (當左邊條件為真/變數存在，才套用右邊的值，若不存在會套用左邊值)
+const a = var1 && var2 (當左邊變數為true，才套用右邊的值，若為false會套用左邊值)
 console.log(3 && 'cat') // 'cat'
 console.log(0 && null)  // 0
 console.log('' && 0)    // ''
 
 
-const a = var1 || var2 (當左邊條件為否/變數不存在，才套用右邊的值，若存在會套用左邊值)
+const a = var1 || var2 (當左邊變數為false，才套用右邊的值，若為true會套用左邊值)
 console.log(3 || 'cat') // 3
-console.log('' || null) // ''
+console.log('' || null) // null
 console.log(undefined || 0 || '' || 'hi' || 23) // 'hi'
 ```
 
@@ -486,7 +486,7 @@ console.log(`I can drink ${age >= 18 ? 'wine' : 'water'}`); // I can drink wine
 - switch（比較少用，看情況還是可以使用）
 
 ```javascript
-const day = 'morning';
+const time = 'morning';
 
 switch (time) {
   case 'morning':

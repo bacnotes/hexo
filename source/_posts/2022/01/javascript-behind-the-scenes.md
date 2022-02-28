@@ -85,7 +85,7 @@ step2~3. optimization: 邊執行邊最佳化(在特別的thread執行，無法ac
 - browser: JavaScript 引擎 + webAPIs + callback queue
 - call stack : 由上到下執行 stack 裡面每一行程式，變數的記憶體也是在這個階段建立(hoisting)，遇到需要呼叫 API 的非同步函式會把裡面的 call back function 丟到 webAPI 排程執行
 - webAPIs 處理非同步函式，當有收到回傳結果，會依照回傳時間順序把 callback function 傳到 callback queue
-- 當 stack 清空時，callback queue 就會把 callback function 依序丟到 stack 裡執行（先進先出)
+- 當 stack 清空時，callback queue 就會把 callback function 依序（queue先進先出)丟到 stack 裡執行
 - 這整個過程就是 event loop，為了提高瀏覽器的使用體驗，不會被非同步函式等待過程阻塞的機制
   <img src="./browser.png" alt="interpretation">
 

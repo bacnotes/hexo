@@ -1,5 +1,5 @@
 ---
-title: 介紹Vue3與Composition API｜Bacnotes備份筆記
+title: 介紹Vue3與Composition API｜bacnotes備份筆記
 date: 2022-02-08 00:23:33
 updated: 2022-02-08 00:23:33
 excerpt: Vue3 Composition API解決了Vue2在同功能程式碼分散於不同option API的可讀性問題，且加入Composition function容易讓程式碼複用，精簡程式碼，雖然有點像React Hook，但用起來較不容易踩到無限迴圈的坑(有種防呆版Hook的感覺)。開始使用setup()開啟你另一段Vue開發人生吧！
@@ -20,13 +20,22 @@ categories:
 
 Vue3 的生命週期(對應在 Vue2 的生命週期名稱)
 
-- setup(beforeCreate)：初始化 Vue 實例/初始化事件跟生命週期(尚無法讀取 data, computed, methods, watch/event callbacks)
-- setup(created)：創建完實例(設置 data, computed, methods, watch/event callbacks，尚無法讀取$el，適合 fetch 資料)
-- BeforeMount(beforeMount)：尚未掛載模板(相關 render 函式首次被調用)
-- onMounted(mounted)：實例掛載模板(el 被新創建的 vm.$el 替換)
-- onBeforeUpdate(beforeUpdate)：data 更新但還沒重新渲染畫面(適合 DOM 將要被更新之前訪問，比如移除手動添加的監聽器)
-- onUpdated(updated)：data 更新也重新渲染畫面 (適合搭配 watch/computed 更新模板資料)
-- onBeforeUnmount(beforeDestroy)：實例被銷毀前(卸載手動添加的監聽)
+- setup(beforeCreate)：初始化 Vue 實例/事件跟生命週期
+  -- 尚無法讀取 data, computed, methods, watch/event callbacks
+  -- 適合展示loading畫面，不適合fetch資料，還沒有data可以存
+- setup(created)：創建完實例(虛擬DOM) 
+  -- 設置 data, computed, methods, watch/event callbacks
+  -- 尚無法讀取$el，適合 fetch 資料
+- onBeforeMount(beforeMount)：尚未掛載模板
+  -- 相關 render 函式首次被調用
+- onMounted(mounted)：實例掛載模板(真實DOM)
+  -- el 被新創建的 vm.$el 替換
+- onBeforeUpdate(beforeUpdate)：data 更新但還沒重新渲染畫面
+  -- 適合在此更新資料
+- onUpdated(updated)：data 更新且渲染畫面完成
+  -- 可以取得更新的DOM
+- onBeforeUnmount(beforeDestroy)：實例被銷毀前
+  -- 適合在此時卸載手動添加的監聽/訂閱
 - onUnmounted(destroyed)：實例被銷毀
 
 如果希望在渲染畫面完畢才操作某些函式，在生命週期中使用 vm.$nextTick
@@ -81,7 +90,7 @@ import { toRefs } from 'vue'
 
 ### template refs
 
-- ref : 可以使用任何型態的資料，在生命週期函式取資料時用變數.value(模板上則不需要.value)不會對 Object 或是 Array 內部的屬性做監聽，適合用於傳值的 primitives也適合用於單層物件。
+- ref : 可以使用任何型態的資料，在生命週期函式取資料時用變數.value(模板上則不需要.value)不會對 Object 或是 Array 內部的屬性做監聽，適合用於傳值的 primitives 也適合用於單層物件。
 - 使用前需要先`import {ref} from vue`
 - 雖然可以用於手動改變 DOM 內容，但實務上很少這樣綁定操作
 - 下方為使用 primitives 的例子
@@ -241,13 +250,17 @@ export default {
 - watch(監聽 dependency, ()=>{})，當 watch 的 dependency 有變化就執行後面的函式
 - 後面執行函式自帶選擇性的使用的兩個參數分別為新值跟舊值
 - 監聽深層物件加上第三個參數{deep: true}
-- 希望載入就執行需要加上immediate: true
+- 希望載入就執行需要加上 immediate: true
 
 ```js
-watch(search, (newValue, OldValue) => {
-  console.log("newValue, OldValue");
-  console.log("watch");
-}, { deep: true , immediate: true });
+watch(
+  search,
+  (newValue, OldValue) => {
+    console.log("newValue, OldValue");
+    console.log("watch");
+  },
+  { deep: true, immediate: true }
+);
 ```
 
 ## watchEffect
@@ -265,7 +278,7 @@ watchEffect(() => {
 
 - watch 可以明確指定需要依賴的屬性，watchEffect 則是依賴 callback 中使用到的屬性
 - watch 可以獲取新舊值，watchEffect 無法
-- watch 不會立即執行(除非有寫immediate: true)，watchEffect 在元件初始化時就會執行一次
+- watch 不會立即執行(除非有寫 immediate: true)，watchEffect 在元件初始化時就會執行一次
 - watchEffect 中 dependency 會被重複執行，動態新增加的 dependency 也會被收集
 
 ```js
