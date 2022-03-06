@@ -4,7 +4,7 @@ date: 2022-02-26 21:43:11
 updated: 2022-02-26 21:43:11
 excerpt: 之前寫過一篇Vue Composition API 的文章，這篇主要想針對Vue2 Option API跟基礎知識做介紹。由於大家手上專案可能會有Vue2 / Vue3的版本，了解Vue2除了有助於維護舊專案；當未來若有重構需求，勢必得先了解原本的功能邏輯才能重構好。那麼就來以常見的開源專案TodoMVC來複習一下Vue2 Option API吧。
 categories:
-  - vue
+  - Vue
 ---
 
 ## 什麼是 Vue

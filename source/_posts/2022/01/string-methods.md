@@ -2,7 +2,7 @@
 title: 字串的處理方法｜The Complete JavaScript Course｜bacnotes備份筆記
 date: 2022-01-30 00:23:33
 updated: 2022-01-30 00:23:33
-excerpt: 在JavaScript會用到許多處理字串的方法，這份字串方法懶人包整理了indexOf()、lastIndexOf()、slice()、toUpperCase()、toLowerCase()、trim()、trimStart()、trimEnd()、replace()、replaceAll()、includes()、split()、join()、padStart()、padEnd()、repeat()等用法。
+excerpt: 在JavaScript會用到許多處理字串的方法，這份字串方法懶人包整理了indexOf()、lastIndexOf()、slice()、toUpperCase()、toLowerCase()、trim()、trimStart()、trimEnd()、replace()、replaceAll()、includes()、split()、join()、padStart()、padEnd()、repeat()、search()、match()等用法。
 categories:
   - JavaScript
 ---
@@ -209,7 +209,7 @@ const capitalizeName = function (name) {
 ```
 
 ＊字串拼接還有一種 concat 方法，但 MDN 強烈建議直接使用運算子 assignment operators (en-US) 來達成， 像是 + 及 +=
-若想了解concat方法，可以參考[陣列的處理方法](https://bacnotes.github.io/array-methods/ "介紹陣列方法")
+若想了解 concat 方法，可以參考[陣列的處理方法](https://bacnotes.github.io/array-methods/ "介紹陣列方法")
 
 ### padStart()、padEnd()填充字串 (IE 沒有支援)
 
@@ -245,6 +245,50 @@ const planesInLine = function (num) {
 };
 planesInLine(5);
 // There are 5 planes in line 🛩🛩🛩🛩🛩
+```
+
+### search()
+
+- 回傳正規表達式的第一個匹配的 index，若找不到，回傳 -1。
+
+```js
+const paragraph =
+  "The quick brown fox jumps over the lazy dog. If the dog barked, was it really lazy?";
+
+// any character that is not a word character or whitespace
+const regex = /[^\w\s]/g;
+
+console.log(paragraph.search(regex));
+// expected output: 43
+
+console.log(paragraph[paragraph.search(regex)]);
+// expected output: "."
+```
+
+### match()
+
+- 回傳一個字串匹配正規表達式的结果
+- 使用 g 全局比對，回傳所有結果在一個陣列
+- 沒有使用 g，回傳第一個匹配的結果，匹配的起始點，輸入字串本身，捕獲陣列或 undefined
+
+```js
+const paragraph = "The quick brown fox jumps over the lazy dog. It barked.";
+const regex = /[A-Z]/g;
+const regexNotGlobal = /[A-Z]/;
+const found = paragraph.match(regex);
+const foundNotGlobal = paragraph.match(regexNotGlobal);
+
+console.log(found);
+// expected output: Array ["T", "I"]
+
+console.log(foundNotGlobal);
+
+// [
+//  'T',
+//  index: 0,
+//  input: 'The quick brown fox jumps over the lazy dog. It barked.',
+//  groups: undefined
+// ]
 ```
 
 ### 綜合練習
@@ -291,18 +335,17 @@ document.querySelector("button").addEventListener("click", function () {
 //            Departure from FAO to LIS (12h30)
 
 // 抽出共用方法：切出前三個字轉大寫
-const getCode = str =>str.slice(0,3).toUpperCase()
+const getCode = (str) => str.slice(0, 3).toUpperCase();
 
-for (const item of flights.split('+')) {
-  const [status, from, to, time] = item.split(';');
-  const signal = status.slice(1).includes('_') ? '🔴' : '';
+for (const item of flights.split("+")) {
+  const [status, from, to, time] = item.split(";");
+  const signal = status.slice(1).includes("_") ? "🔴" : "";
   console.log(
-    `${signal}${status.replaceAll('_', ' ')} ${getCode(from)} ${getCode(
+    `${signal}${status.replaceAll("_", " ")} ${getCode(from)} ${getCode(
       to
-    )} ${time.replace(':', 'h')}`.padStart(35)
+    )} ${time.replace(":", "h")}`.padStart(35)
   );
 }
-
 ```
 
 ## 補充：為什麼字串是 Primitives (不是物件)，卻可以呼叫方法
